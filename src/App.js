@@ -4,11 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./containers/Home";
-import Products from "./containers/Products";
+import Offers from "./containers/Offers";
 
 function App() {
   // DEFINE STATES HERE
-  const [products, setProducts] = useState([]);
+  const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // AXIOS REQ
@@ -17,7 +17,7 @@ function App() {
       const response = await axios.get(
         "https://vinted-api-phoenix2020.herokuapp.com/"
       );
-      setProducts(response.data);
+      setOffers(response.data);
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -30,15 +30,15 @@ function App() {
   }, []);
 
   /* PROPS TO PASS :
-  products, isLoading, 
+  offers, isLoading, 
   */
   return (
     <Router>
       <Switch>
-        <Route path="/product">
-          <Products />
+        <Route path="/offer/:id">
+          <Offers />
         </Route>
-        <Route path="/">
+        <Route path="/" offers={offers} isLoading={isLoading}>
           <Home />
         </Route>
       </Switch>

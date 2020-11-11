@@ -4,18 +4,18 @@ import "./Home.css";
 
 import Header from "../Components/Header";
 
-const Home = () => {
+const Home = ({ offers, isLoading }) => {
   // ACCESS A ID VIA A REQUEST
-  return (
+  console.log(offers);
+  return isLoading ? (
+    <p>En cours de chargement...</p>
+  ) : (
     <div className="container">
       <Header />
-      HomePage
-      <p>
-        ACCES VERS LE BACKEN (route GET) : <br />
-        https://vinted-api-phoenix2020.herokuapp.com/
-      </p>
+      {/* NEED TO MAP OVER OFFER TO PUBLISH OFFERS */}
+      <p>{offers}</p>
       <br />
-      <Link to={`/product/`}>Go Products</Link>
+      <Link to={`/offer/`}>Go Products</Link>
     </div>
   );
 };
