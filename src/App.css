@@ -1,1 +1,66 @@
-/* Other rules */
+/* COMMON RULES */
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  font-family: "Maison Neuve Reg";
+}
+
+/* HEADER */
+.logo {
+  height: 35px;
+}
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #ccc;
+}
+
+.buttons > button {
+  border: none;
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  background-color: #2aaeb7;
+}
+.hero > img {
+  width: 100%;
+}
+
+/* MINI CARD */
+
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+  margin: 15px;
+  /* flex: 1; */
+  width: 265px;
+}
+.card:hover {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card-picture {
+  height: 350px;
+}
+a {
+  text-decoration: none;
+}
+
+/* OFFERS PAGE */
+.single-card {
+  height: 500px;
+  width: 500px;
+  border: 2px black dashed;
+  margin: 30px auto;
+}

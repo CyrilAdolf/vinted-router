@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
-import "../Components/Card.css";
 import axios from "axios";
 
 import Header from "../Components/Header";
