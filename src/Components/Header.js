@@ -1,5 +1,4 @@
 import React from "react";
-import hero from "../Assets/img/hero.jpg";
 
 const Header = () => {
   return (
@@ -11,9 +10,6 @@ const Header = () => {
           <button>se connecter</button>
           <button>vends tes articles</button>
         </div>
-      </div>
-      <div className="hero">
-        <img src={hero} alt="hero" />
       </div>
     </div>
   );

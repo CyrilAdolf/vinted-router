@@ -1,6 +1,7 @@
 .card-section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .card {
   box-sizing: border-box;
@@ -8,7 +9,8 @@
   color: black;
   padding: 15px;
   margin: 15px;
-  flex: 1;
+  /* flex: 1; */
+  width: 265px;
 }
 .card:hover {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);

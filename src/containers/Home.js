@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import "../Components/Card.css";
 import axios from "axios";
 
 import Header from "../Components/Header";
 import Card from "../Components/Card";
+
+import hero from "../Assets/img/hero.jpg";
 
 // import Request from "../Components/Request";
 
@@ -45,15 +48,21 @@ const Home = () => {
   ) : (
     <div className="container">
       <Header />
+      <div className="hero">
+        <img src={hero} alt="hero" />
+      </div>
       {/* NEED TO MAP OVER OFFER TO PUBLISH OFFERS */}
-      <p>{offers[0].product_name}</p>
       <br />
       {/* <Link to={`/offer/${id}`}>Go offers</Link> */}
-      <Link to={`/offer/`} className="card-section">
+      <div className="card-section">
         {offers.map((offer, i) => {
-          return <Card offer={offer} />;
+          return (
+            <Link to={`/offer/${offer._id}`}>
+              <Card offer={offer} />
+            </Link>
+          );
         })}
-      </Link>
+      </div>
     </div>
   );
 };
