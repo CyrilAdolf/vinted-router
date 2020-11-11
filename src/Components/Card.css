@@ -1,0 +1,23 @@
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+  margin: 15px;
+  flex: 1;
+}
+.card:hover {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card-picture {
+  height: 350px;
+}
+/* NO UNDERLINE */
+a {
+  text-decoration: none;
+}
