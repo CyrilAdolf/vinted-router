@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "/Users/cyriladolf/LeReacteur/React/08/exercise-vinted-router/src/Assets/img/Vinted_logo.png";
+import logo from "../Assets/img/Vinted_logo.png";
 
 const Header = () => {
   return (
