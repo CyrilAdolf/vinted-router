@@ -6,8 +6,6 @@ import Card from "../Components/Card";
 import hero from "../Assets/img/hero.jpg";
 
 const Home = () => {
-
-  // A D2PLACER DANS UNE FONCTION
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // AXIOS REQ
@@ -25,7 +23,6 @@ const Home = () => {
     };
     fetchdata();
   }, []);
-  // A D2PLACER DANS UNE FONCTION
 
   return isLoading ? (
     <p>En cours de chargement...</p>

@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
-
-const Offers = () => {
+const Offers = ({ handleFetch }) => {
   // useParams GAVE US A OBJECT. HERE WE DESTRUCTURE IT
   const { id } = useParams();
-
-  // A D2PLACER DANS UNE FONCTION
+  // console.log(id);
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // AXIOS REQ
@@ -24,13 +22,12 @@ const Offers = () => {
       }
     };
     fetchdata();
-  }, []);
-  // A D2PLACER DANS UNE FONCTION
+  }, [id]);
 
   return isLoading ? (
     <p>En cours de chargement...</p>
   ) : (
-    <div>
+    <div className="container">
       <div className="single-card">
         <p>{offer.product_description}</p>
         <img src={offer.product_image.secure_url} alt="" />
