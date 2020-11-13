@@ -10,6 +10,17 @@ import Header from "./Components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 
+// FONTAWESOME LIBRARY
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faEnvelope,
+  faKey,
+  faHeart,
+  faUserPlus,
+  faTag,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faEnvelope, faKey, faHeart, faUserPlus, faTag);
+
 function App() {
   // AUTHENTIFICATION STEPS ARE SETUP IN THE APP.JS
   const [token, setToken] = useState(Cookie.get("userToken") || null);

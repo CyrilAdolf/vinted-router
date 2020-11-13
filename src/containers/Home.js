@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
-    <p>En cours de chargement...</p>
+    <p className="container">En cours de chargement...</p>
   ) : (
     <div className="container">
       <div className="hero">
@@ -35,7 +35,7 @@ const Home = () => {
       <div className="card-section">
         {offers.map((offer, i) => {
           return (
-            <Link to={`/offer/${offer._id}`}>
+            <Link to={`/offer/${offer._id}`} key={offer._id}>
               <Card offer={offer} />
             </Link>
           );

@@ -26,7 +26,7 @@ const Login = ({ setUser }) => {
   //   password: "azerty",
 
   return (
-    <div>
+    <div className="container">
       Login page
       <form
         onSubmit={(event) => {

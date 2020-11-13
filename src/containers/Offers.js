@@ -25,7 +25,7 @@ const Offers = ({ handleFetch }) => {
   }, [id]);
 
   return isLoading ? (
-    <p>En cours de chargement...</p>
+    <p className="container">En cours de chargement...</p>
   ) : (
     <div className="container">
       <div className="single-card">

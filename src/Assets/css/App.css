@@ -2,13 +2,16 @@
 
 .container {
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 60px auto 0 auto;
+}
+body {
   font-family: "Maison Neuve Reg";
 }
 
 /* HEADER */
 .logo {
   height: 35px;
+  margin-left: 20px;
 }
 
 .header > div {
@@ -17,6 +20,24 @@
   align-items: center;
   width: 100%;
   background-color: #ccc;
+  position: fixed;
+  max-width: 1300px;
+  margin: -60px auto 0px auto;
+  height: 60px;
+}
+
+.header-button {
+  border: none;
+  border-radius: 20px;
+  width: 150px;
+  height: 30px;
+  background-color: #2aaeb7;
+  color: white;
+  padding: 5px 15px;
+  margin: 15px;
+}
+.header-button > .icon {
+  margin-right: 10px;
 }
 
 .buttons > button {
@@ -28,6 +49,8 @@
 }
 .hero > img {
   width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
 /* MINI CARD */
@@ -51,7 +74,7 @@
 }
 
 .card-picture {
-  height: 350px;
+  width: 230px;
 }
 a {
   text-decoration: none;
