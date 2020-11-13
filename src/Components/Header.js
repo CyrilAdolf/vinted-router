@@ -5,7 +5,7 @@ import logo from "../Assets/img/Vinted_logo.png";
 // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ token, setUser }) => {
+const Header = ({ token, setUser, setModal1, setModal2 }) => {
   return (
     <div className="container header">
       <div>
@@ -27,11 +27,23 @@ const Header = ({ token, setUser }) => {
             </>
           ) : (
             <>
-              <Link to="/signup" className="header-button">
+              <Link
+                to="/signup"
+                className="header-button"
+                onClick={() => {
+                  setModal2(true);
+                }}
+              >
                 <FontAwesomeIcon icon="user-plus" className="icon" />
                 S'inscrire{" "}
               </Link>
-              <Link to="/login" className="header-button">
+              <Link
+                to="/login"
+                className="header-button"
+                onClick={() => {
+                  setModal1(true);
+                }}
+              >
                 <FontAwesomeIcon icon="key" className="icon" /> Se Connecter
               </Link>
               <Link to="/" className="header-button">

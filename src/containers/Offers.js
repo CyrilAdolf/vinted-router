@@ -33,7 +33,7 @@ const Offers = ({ handleFetch }) => {
         <img src={offer.product_image.secure_url} alt="" />
       </div>
 
-      <Link to={`/`}> Back to HomePage</Link>
+      <Link to={`/`}>Revenir à la page d'accueil</Link>
     </div>
   );
 };

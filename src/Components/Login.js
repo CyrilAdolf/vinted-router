@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setModal1 }) => {
   // STATES FOR FORMS
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ const Login = ({ setUser }) => {
           password: password,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setUser(response.data.token);
     } catch (error) {
       console.log(error.message);
@@ -26,16 +27,25 @@ const Login = ({ setUser }) => {
   //   password: "azerty",
 
   return (
-    <div className="container">
-      Login page
+    <div className="container login modal-wrapper">
       <form
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
+        <div
+          className="exit-modal"
+          onClick={() => {
+            setModal1(false);
+          }}
+        >
+          <FontAwesomeIcon icon="times" className="icon" />
+        </div>
+        <p>Connexion</p>
+
         <input
           type="email"
-          placeholder="name@mail.com"
+          placeholder="merci@tous.com"
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
@@ -43,7 +53,7 @@ const Login = ({ setUser }) => {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Mot de passe"
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
