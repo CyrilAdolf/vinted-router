@@ -70,7 +70,7 @@ body {
 .card-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .card {
   box-sizing: border-box;
@@ -112,7 +112,15 @@ a {
   height: 50px;
   background-color: #ccc;
 }
-
+.footer img {
+  height: 25px;
+}
+.footer a {
+  color: black;
+}
+.footer a:hover {
+  font-weight: 900;
+}
 /* FORM - MODAL */
 /* FORM - MODAL */
 /* FORM - MODAL */
@@ -127,7 +135,7 @@ form {
   padding: 30px;
   box-sizing: border-box;
   border-radius: 20px;
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
   /* TO FIX ".exit-modal" */
   position: relative;
 }
@@ -139,7 +147,7 @@ form {
   font-size: 20px;
 }
 .login p {
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 900;
 }
 input:last-child {
@@ -177,5 +185,30 @@ input:last-child:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   width: Calc(100%);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .media-1024 {
+    display: none;
+  }
+  .hidden {
+    display: flex;
+  }
+  .header-button {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 30px;
+    height: 20px;
+    /* text-align: center; */
+  }
 }

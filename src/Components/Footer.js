@@ -1,23 +1,24 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import facebook from "../Assets/img/facebook.png";
+// import Github from "../Assets/img/Github.png";
+// import linkedin from "../Assets/img/linkedin.png";
+// import twitter from "../Assets/img/twitter.png";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      Made with &nbsp;<span>React &nbsp;</span> at &nbsp;
+    <div className="footer container">
+      Made with&nbsp;<span>React&nbsp;</span>at&nbsp;
       <span>
         <a
           href="http://www.lereacteur.io"
           rel="noopener noreferrer"
           target="_blank"
         >
-          LeReacteur{" "}
-        </a>{" "}
-        &nbsp;
+          LeReacteur&nbsp;
+        </a>
       </span>
-      by &nbsp;
+      by&nbsp;
       <span>
-        {" "}
         <a
           href="https://github.com/CyrilAdolf"
           rel="noopener noreferrer"
@@ -25,18 +26,18 @@ const Footer = () => {
         >
           Cyril
         </a>
-        <a href="https://www.linkedin.com/in/cyril-adolf-aab3861b7/">
-          <FontAwesomeIcon icon="linkedin" className="icon" />
+        {/* <a href="https://www.linkedin.com/in/cyril-adolf-aab3861b7/">
+          <img src={linkedin} alt="" />
         </a>
         <a href="https://github.com/CyrilAdolf">
-          <FontAwesomeIcon icon="Github" className="icon" />
+          <img src={github} alt="" />
         </a>
         <a href="https://www.facebook.com/adolf.cyril">
-          <FontAwesomeIcon icon="facebook" className="icon" />
+          <img src={facebook} alt="" />
         </a>
         <a href="https://twitter.com/AKyril">
-          <FontAwesomeIcon icon="twitter" className="icon" />
-        </a>
+          <img src={twitter} alt="" />
+        </a> */}
       </span>
     </div>
   );

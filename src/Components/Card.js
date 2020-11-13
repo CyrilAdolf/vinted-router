@@ -2,6 +2,8 @@ import React from "react";
 
 const Card = ({ offer }) => {
   return (
+    // NEED TO WORK ON CSS FOR THIS SECTION
+    // NEED TO WORK ON CSS FOR THIS SECTION
     <div className="card">
       <p className="user">name: {offer.owner.account.username}</p>
       <img

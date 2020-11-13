@@ -13,6 +13,7 @@ const Home = () => {
     const fetchdata = async () => {
       try {
         const response = await axios.get(
+          // REPLACE WITH MY BACKEND URL
           "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
         setOffers(response.data.offers);
@@ -25,6 +26,7 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
+    // PACKAGE ARE AVAILABLE TO STYLE LOADING SCREEN
     <p className="container">En cours de chargement...</p>
   ) : (
     <div className="container">

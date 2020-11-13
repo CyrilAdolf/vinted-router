@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Assets/css/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./Assets/Fonts/stylesheet.css";
 import Cookie from "js-cookie";
+import "./Assets/css/App.css";
+import "./Assets/Fonts/stylesheet.css";
 
 import Home from "./Containers/Home";
 import Offers from "./Containers/Offers";
@@ -21,26 +21,7 @@ import {
   faTag,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-
-import {
-  faTwitterSquare,
-  faFacebook,
-  faLinkedin,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-
-library.add(
-  faEnvelope,
-  faKey,
-  faHeart,
-  faUserPlus,
-  faTag,
-  faTimes,
-  faTwitterSquare,
-  faFacebook,
-  faLinkedin,
-  faGithub
-);
+library.add(faEnvelope, faKey, faHeart, faUserPlus, faTag, faTimes);
 
 function App() {
   // AUTHENTIFICATION STEPS ARE SETUP IN THE APP.JS
@@ -50,11 +31,11 @@ function App() {
 
   const setUser = (dataToken) => {
     if (dataToken) {
-      // CONNECTION = CREATE A TOKEN AND SO COOKIE
+      // CONNECTION = CREATE A TOKEN AND SO A COOKIE
       Cookie.set("userToken", dataToken);
       setToken(dataToken);
     } else {
-      // DISCONNECTION = REMOVE TOKEN AND COOKIE
+      // DISCONNECTION = REMOVE COOKIE AND TOKEN
       Cookie.remove("userToken");
       setToken(null);
     }
@@ -76,8 +57,10 @@ function App() {
         <Route path="/">
           <Home />
         </Route>
-        <Route>{"404"}</Route>
+        {/* DEFINE ALL ROUTE PAGE HERE */}
+        {/* <Route>{"404"}</Route> */}
       </Switch>
+      {/* MODAL PAGES */}
       {modal1 ? (
         <Route path="/login">
           <Login setUser={setUser} setModal1={setModal1} />
