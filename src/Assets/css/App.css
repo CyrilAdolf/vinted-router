@@ -3,6 +3,7 @@
 .container {
   max-width: 1300px;
   margin: 60px auto 0 auto;
+  background-color: #eee;
 }
 body {
   font-family: "Maison Neuve Reg";
@@ -24,7 +25,8 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #ccc;
+  background-color: white;
+  border-bottom: #2aaeb7 solid 1px;
   position: fixed;
   max-width: 1300px;
   margin: -60px auto 0px auto;
@@ -63,9 +65,9 @@ body {
   object-fit: cover;
 }
 
-/* MINI CARD */
-/* MINI CARD */
-/* MINI CARD */
+/* MINI CARD SECTION */
+/* MINI CARD SECTION */
+/* MINI CARD SECTION */
 
 .card-section {
   display: flex;
@@ -91,6 +93,29 @@ body {
 a {
   text-decoration: none;
 }
+.pageNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  height: 25px;
+}
+.eachNumber {
+  cursor: pointer;
+  margin: 0 20px;
+}
+.eachNumber:hover {
+  font-size: 20px;
+  font-weight: 900;
+  text-decoration: underline;
+}
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
 
 /* OFFERS PAGE */
 /* OFFERS PAGE */
@@ -110,7 +135,9 @@ a {
   align-items: center;
   justify-content: center;
   height: 50px;
-  background-color: #ccc;
+  background-color: white;
+  border-top: #2aaeb7 solid 1px;
+  margin-top: 0;
 }
 .footer img {
   height: 25px;
