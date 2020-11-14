@@ -48,6 +48,7 @@ function App() {
         setUser={setUser}
         setModal1={setModal1}
         setModal2={setModal2}
+        setToken={setToken}
       />
       <Switch>
         <Route path="/offer/:id">

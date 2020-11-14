@@ -64,7 +64,14 @@ body {
   height: 250px;
   object-fit: cover;
 }
-
+.disconnect {
+  background-color: #fc0099;
+  border: #fc0099 1px solid;
+}
+.disconnect:hover {
+  color: #fc0099;
+  background-color: white;
+}
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
@@ -120,6 +127,11 @@ a {
 /* OFFERS PAGE */
 /* OFFERS PAGE */
 /* OFFERS PAGE */
+.offers {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 .single-card {
   height: 500px;
   width: 500px;

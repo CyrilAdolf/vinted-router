@@ -28,11 +28,30 @@ const Offers = ({ handleFetch }) => {
     <p className="container">En cours de chargement...</p>
   ) : (
     <div className="container">
-      <div className="single-card">
-        <p>{offer.product_description}</p>
-        <img src={offer.product_image.secure_url} alt="" />
-      </div>
+      <div className="offers">
+        <div className="pictures">
+          <img src={offer.product_image.secure_url} alt="" />
+        </div>
+        <div className="single-card">
+          <div>
+          <p>PRIX</p>
+          <p>MARQUE: </p>
+          <p>TAILLE: </p>
+          <p>ÉTAT:</p>
+          <p>COULEUR: </p>
+          </div>
+          
+          <div>
+          {/* <p>PRIX</p>
+          <p>MARQUE: </p>
+          <p>TAILLE: </p>
+          <p>ÉTAT:</p>
+          <p>COULEUR: </p> */}
+          </div>
 
+          <p>{offer.product_description}</p>
+        </div>
+      </div>
       <Link to={`/`}>Revenir à la page d'accueil</Link>
     </div>
   );

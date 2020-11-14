@@ -19,18 +19,49 @@ const Header = ({ token, setUser, setModal1, setModal2 }) => {
         {/* SEARCHBAR */}
         {/* SEARCHBAR */}
 
-        <div className="buttons">
+        <div className="buttons media-1024">
           {token ? (
+            // <>
+            //   <button className="disconnect"
+            //     onClick={() => {
+            //       setUser(null);
+            //     }}
+            //   >
+            //     Se Déconnecter
+            //   </button>
+            //   <button>Vends tes articles</button>
+            // </>
             <>
-              <button
-                onClick={() => {
-                  setUser(null);
-                }}
-              >
-                Se Déconnecter
-              </button>
-              <button>Vends tes articles</button>
-            </>
+              <div className="media-1024">
+                <Link
+                  to="/"
+                  className="header-button disconnect"
+                  onClick={() => {
+                    setUser(null);
+                  }}
+                >
+                  <FontAwesomeIcon icon="key" className="icon" /> Se Déconnecter
+                </Link>
+                <Link to="/" className="header-button">
+                  <FontAwesomeIcon icon="tag" className="icon" />
+                  Vends tes Articles
+                </Link>
+              </div>
+              <div className="hidden">
+                <Link
+                  to="/"
+                  className="header-button disconnect"
+                  onClick={() => {
+                    setUser(null);
+                  }}
+                >
+                  <FontAwesomeIcon icon="key" className="icon" />
+                </Link>
+                <Link to="/" className="header-button">
+                  <FontAwesomeIcon icon="tag" className="icon" />
+                </Link>
+              </div>
+              </>
           ) : (
             <>
               <div className="media-1024">
@@ -42,7 +73,7 @@ const Header = ({ token, setUser, setModal1, setModal2 }) => {
                   }}
                 >
                   <FontAwesomeIcon icon="user-plus" className="icon" />
-                  S'inscrire{" "}
+                  S'inscrire
                 </Link>
                 <Link
                   to="/login"
