@@ -1,123 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import IfTokenButtons from "./IfTokenButtons";
+import IfNoTokenButtons from "./IfNoTokenButtons";
 import logo from "../Assets/img/Vinted_logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// MAYBE SPLIT THIS INTO SMALLER COMPONENTS
-// BUTTON DONT LINK TO THE SAME PAGE, GIVE THIS INFOS IN PROPS
-const Header = ({ token, setUser, setModal1, setModal2 }) => {
+const Header = ({
+  token,
+  setUser,
+  setModal1,
+  setModal2,
+  search,
+  setSearch,
+}) => {
   return (
     <div className="container header">
       <div>
         <Link to="/">
           <img src={logo} alt="" className="logo" />
         </Link>
-
-        {/* SEARCHBAR */}
-        {/* SEARCHBAR */}
-        <input type="text" />
-        {/* SEARCHBAR */}
-        {/* SEARCHBAR */}
-
-        <div className="buttons media-1024">
+        <input
+          className="searchBar"
+          type="text"
+          value={search}
+          placeholder="🔍 Rechercher des articles"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+        <div className="buttons">
           {token ? (
-            // <>
-            //   <button className="disconnect"
-            //     onClick={() => {
-            //       setUser(null);
-            //     }}
-            //   >
-            //     Se Déconnecter
-            //   </button>
-            //   <button>Vends tes articles</button>
-            // </>
-            <>
-              <div className="media-1024">
-                <Link
-                  to="/"
-                  className="header-button disconnect"
-                  onClick={() => {
-                    setUser(null);
-                  }}
-                >
-                  <FontAwesomeIcon icon="key" className="icon" /> Se Déconnecter
-                </Link>
-                <Link to="/" className="header-button">
-                  <FontAwesomeIcon icon="tag" className="icon" />
-                  Vends tes Articles
-                </Link>
-              </div>
-              <div className="hidden">
-                <Link
-                  to="/"
-                  className="header-button disconnect"
-                  onClick={() => {
-                    setUser(null);
-                  }}
-                >
-                  <FontAwesomeIcon icon="key" className="icon" />
-                </Link>
-                <Link to="/" className="header-button">
-                  <FontAwesomeIcon icon="tag" className="icon" />
-                </Link>
-              </div>
-              </>
+            <IfTokenButtons setUser={setUser} />
           ) : (
-            <>
-              <div className="media-1024">
-                <Link
-                  to="/signup"
-                  className="header-button"
-                  onClick={() => {
-                    setModal2(true);
-                  }}
-                >
-                  <FontAwesomeIcon icon="user-plus" className="icon" />
-                  S'inscrire
-                </Link>
-                <Link
-                  to="/login"
-                  className="header-button"
-                  onClick={() => {
-                    setModal1(true);
-                  }}
-                >
-                  <FontAwesomeIcon icon="key" className="icon" /> Se Connecter
-                </Link>
-                <Link to="/" className="header-button">
-                  <FontAwesomeIcon icon="tag" className="icon" />
-                  Vends tes Articles
-                </Link>
-              </div>
-              <div className="hidden">
-                <Link
-                  to="/signup"
-                  className="header-button"
-                  onClick={() => {
-                    setModal2(true);
-                  }}
-                >
-                  <FontAwesomeIcon icon="user-plus" className="icon" />
-                </Link>
-                <Link
-                  to="/login"
-                  className="header-button"
-                  onClick={() => {
-                    setModal1(true);
-                  }}
-                >
-                  <FontAwesomeIcon icon="key" className="icon" />
-                </Link>
-                <Link to="/" className="header-button">
-                  <FontAwesomeIcon icon="tag" className="icon" />
-                </Link>
-              </div>
-            </>
+            <IfNoTokenButtons setModal1={setModal1} setModal2={setModal2} />
           )}
         </div>
       </div>
     </div>
   );
 };
-
 export default Header;

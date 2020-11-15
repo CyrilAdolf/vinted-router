@@ -5,14 +5,12 @@ import axios from "axios";
 import Card from "../Components/Card";
 import hero from "../Assets/img/hero.jpg";
 
-const Home = () => {
+const Home = ({ search }) => {
   const [offers, setOffers] = useState([]);
   const [totalPage, setTotalPage] = useState();
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-
-  // Si je mets le numero de page dans un state? La requete va se relancer à chaque changement de page et limiter le temps de chargement.
-  // Il Faut définir le state à 1 par défaut. si on change de page il ne reviendra pas a 1 tout seul ?
+  const [asc, setAsc] = useState("price-asc");
 
   // AXIOS REQ
   useEffect(() => {
@@ -20,7 +18,7 @@ const Home = () => {
       try {
         const response = await axios.get(
           // REPLACE WITH MY BACKEND URL
-          `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}`
         );
         setOffers(response.data.offers);
         setIsLoading(false);
@@ -30,7 +28,7 @@ const Home = () => {
       }
     };
     fetchdata();
-  }, [page]);
+  }, [page, search, asc]);
 
   // DEFINE AN ARRAY WITH NUMBER FROM 1 TO TOTALPAGE
   let arrayPage = [];
@@ -46,7 +44,34 @@ const Home = () => {
       <div className="hero">
         <img src={hero} alt="hero" />
       </div>
-      <br />
+      <div className="filter">
+        <div className="filterAsc">
+          {asc === "price-asc" ? (
+            <p
+              onClick={() => {
+                setAsc("price-desc");
+              }}
+            >
+              ⇣ Trier par prix décroissant ?
+            </p>
+          ) : (
+            <p
+              onClick={() => {
+                setAsc("price-asc");
+              }}
+            >
+              ⇡ Trier par prix croissant ?
+            </p>
+          )}
+        </div>
+        <div className="filterPriceMinMax">
+          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
+          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
+          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
+          Prix min <input type="text" />
+          Prix max <input type="text" />
+        </div>
+      </div>
       <div className="card-section">
         {offers.map((offer, i) => {
           return (
@@ -63,6 +88,7 @@ const Home = () => {
           {arrayPage.map((page, i) => {
             return (
               <p
+                key={i}
                 className="eachNumber"
                 onClick={() => {
                   setPage(page);

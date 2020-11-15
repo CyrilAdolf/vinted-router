@@ -32,7 +32,16 @@ body {
   margin: -60px auto 0px auto;
   height: 60px;
 }
-
+.searchBar {
+  width: 250px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: #eee;
+  padding: 0 15px;
+  box-sizing: border-box;
+  color: #999;
+}
 .header-button {
   border: none;
   border-radius: 20px;
@@ -75,7 +84,32 @@ body {
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
-
+.filter {
+  border: black solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filterAsc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 250px;
+  cursor: pointer;
+  border: #2aaeb7 1px solid;
+  color: #2aaeb7;
+  border-radius: 15px;
+}
+.filterAsc:hover {
+  color: white;
+  background-color: #2aaeb7;
+}
+.filterPriceMinMax {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card-section {
   display: flex;
   flex-wrap: wrap;

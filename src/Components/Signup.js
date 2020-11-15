@@ -7,26 +7,19 @@ const Signup = ({ setUser, setModal2 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        // UPDATE WITH MY BACKEND URL
-
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         { email: email, username: username, password: password }
       );
-      console.log(response.data);
-
-      //   setUser IS USED INSTEAD OF setToken, TO ALLOWS US TO SAVE A COOKIE AND SO KEEP THE TOKEN INFO EVEN IF WE
       setUser(response.data.token);
       history.push("/");
     } catch (error) {
       console.log(error.message);
     }
   };
-
   return (
     <div className="container login modal-wrapper">
       <form
@@ -77,5 +70,4 @@ const Signup = ({ setUser, setModal2 }) => {
     </div>
   );
 };
-
 export default Signup;

@@ -5,7 +5,6 @@ import axios from "axios";
 const Offers = ({ handleFetch }) => {
   // useParams GAVE US A OBJECT. HERE WE DESTRUCTURE IT
   const { id } = useParams();
-  // console.log(id);
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // AXIOS REQ
@@ -23,7 +22,6 @@ const Offers = ({ handleFetch }) => {
     };
     fetchdata();
   }, [id]);
-
   return isLoading ? (
     <p className="container">En cours de chargement...</p>
   ) : (
@@ -34,15 +32,14 @@ const Offers = ({ handleFetch }) => {
         </div>
         <div className="single-card">
           <div>
-          <p>PRIX</p>
-          <p>MARQUE: </p>
-          <p>TAILLE: </p>
-          <p>ÉTAT:</p>
-          <p>COULEUR: </p>
+            <p>PRIX</p>
+            <p>MARQUE: </p>
+            <p>TAILLE: </p>
+            <p>ÉTAT:</p>
+            <p>COULEUR: </p>
           </div>
-          
           <div>
-          {/* <p>PRIX</p>
+            {/* <p>PRIX</p>
           <p>MARQUE: </p>
           <p>TAILLE: </p>
           <p>ÉTAT:</p>

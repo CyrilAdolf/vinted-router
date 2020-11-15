@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookie from "js-cookie";
 import "./Assets/css/App.css";
 import "./Assets/Fonts/stylesheet.css";
-
+// MAIN COMPONENTS
 import Home from "./Containers/Home";
 import Offers from "./Containers/Offers";
 import Header from "./Components/Header";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Footer from "./Components/Footer";
-
 // FONTAWESOME LIBRARY
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -28,7 +27,8 @@ function App() {
   const [token, setToken] = useState(Cookie.get("userToken") || null);
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
-
+  const [search, setSearch] = useState("");
+  // FUNCTION TO SET THE TOKEN
   const setUser = (dataToken) => {
     if (dataToken) {
       // CONNECTION = CREATE A TOKEN AND SO A COOKIE
@@ -49,17 +49,16 @@ function App() {
         setModal1={setModal1}
         setModal2={setModal2}
         setToken={setToken}
+        search={search}
+        setSearch={setSearch}
       />
       <Switch>
         <Route path="/offer/:id">
           <Offers />
         </Route>
-
         <Route path="/">
-          <Home />
+          <Home search={search} />
         </Route>
-        {/* DEFINE ALL ROUTE PAGE HERE */}
-        {/* <Route>{"404"}</Route> */}
       </Switch>
       {/* MODAL PAGES */}
       {modal1 ? (
