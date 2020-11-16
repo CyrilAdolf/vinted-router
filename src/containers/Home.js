@@ -11,6 +11,8 @@ const Home = ({ search }) => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [asc, setAsc] = useState("price-asc");
+  const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState();
 
   // AXIOS REQ
   useEffect(() => {
@@ -18,8 +20,20 @@ const Home = ({ search }) => {
       try {
         const response = await axios.get(
           // REPLACE WITH MY BACKEND URL
-          `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}`
+          minPrice
+            ? maxPrice
+              ? `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}&priceMax=${maxPrice}`
+              : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}`
+            : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}` &&
+              maxPrice
+            ? minPrice
+              ? `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}&priceMax=${maxPrice}`
+              : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMax=${maxPrice}`
+            : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}`
         );
+        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
+        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
+        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
         setOffers(response.data.offers);
         setIsLoading(false);
         setTotalPage(Math.ceil(response.data.count / 8));
@@ -28,7 +42,7 @@ const Home = ({ search }) => {
       }
     };
     fetchdata();
-  }, [page, search, asc]);
+  }, [page, search, asc, minPrice, maxPrice]);
 
   // DEFINE AN ARRAY WITH NUMBER FROM 1 TO TOTALPAGE
   let arrayPage = [];
@@ -36,6 +50,7 @@ const Home = ({ search }) => {
     arrayPage.push(i);
   }
 
+  console.log(minPrice);
   return isLoading ? (
     // PACKAGE ARE AVAILABLE TO STYLE LOADING SCREEN
     <p className="container">En cours de chargement...</p>
@@ -65,11 +80,22 @@ const Home = ({ search }) => {
           )}
         </div>
         <div className="filterPriceMinMax">
-          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
-          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
-          {/* METTRE EN PLACE STATE AVEC MIN ET MAX ET SE REPORTER AU BACK POUR MODIFIER LA REQUETE EN CONSEQUENCE  */}
-          Prix min <input type="text" />
-          Prix max <input type="text" />
+          Prix min :
+          <input
+            type="text"
+            value={minPrice}
+            onChange={(e) => {
+              setMinPrice(e.target.value);
+            }}
+          />
+          Prix max :
+          <input
+            type="text"
+            value={maxPrice}
+            onChange={(e) => {
+              setMaxPrice(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="card-section">

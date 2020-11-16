@@ -11,7 +11,12 @@ body {
 *:focus {
   outline: none;
 }
-
+*:visited {
+  color: black;
+}
+a:hover {
+  font-weight: 900;
+}
 /* HEADER */
 /* HEADER */
 /* HEADER */
@@ -85,7 +90,6 @@ body {
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
 .filter {
-  border: black solid 1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,6 +113,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.filterPriceMinMax input {
+  height: 30px;
+  cursor: pointer;
+  border: #2aaeb7 1px solid;
+  color: #2aaeb7;
+  background-color: white;
+  border-radius: 15px;
+  padding: 0 10px;
+  margin-right: 20px;
 }
 .card-section {
   display: flex;
@@ -165,14 +179,65 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding: 60px 0;
+  min-height: 75vh;
+}
+.pictures {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 500px;
+  margin: 30px;
+}
+.pictures > img {
+  height: 100%;
+  box-sizing: border-box;
+}
+.pictures div {
+  max-width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 .single-card {
   height: 500px;
-  width: 500px;
-  border: 2px black dashed;
-  margin: 30px auto;
+  width: 320px;
+  background-color: white;
+  margin: 30px;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow-x: scroll;
 }
-
+.additionalPic {
+  height: 150px;
+  margin: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.additionalPic:hover {
+  border: 2px black solid;
+  box-sizing: border-box;
+}
+.price {
+  border-bottom: 1px solid lightgrey;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.descript {
+  display: flex;
+  flex-direction: column;
+}
+.descript > div {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+}
+.descript > div span {
+  width: 50%;
+}
+.descript div span:first-child {
+  color: #999;
+}
 /* FOOTER  */
 /* FOOTER  */
 /* FOOTER  */
@@ -223,7 +288,7 @@ form {
   font-size: 50px;
   font-weight: 900;
 }
-input:last-child {
+.login input:last-child {
   background-color: #2aaeb7;
   color: white;
   font-weight: 900;
@@ -267,6 +332,30 @@ input:last-child:hover {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 576px) {
+  .searchBar {
+    width: 45px;
+  }
+  .header-button:last-child {
+    display: none;
+  }
+  .filterPriceMinMax {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .pictures div {
+    display: none;
+  }
+  .offers {
+    flex-direction: column;
+  }
+  .filterPriceMinMax input {
+    width: 80px;
+  }
 }
 
 @media (max-width: 1024px) {
