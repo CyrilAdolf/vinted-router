@@ -11,7 +11,7 @@ const Signup = ({ setUser, setModal2 }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://vinted-api-phoenix2020.herokuapp.com/user/signup",
         { email: email, username: username, password: password }
       );
       setUser(response.data.token);

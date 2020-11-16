@@ -16,7 +16,7 @@ const ifTokenButtons = ({ setUser }) => {
         >
           <FontAwesomeIcon icon="key" className="icon" /> Se Déconnecter
         </Link>
-        <Link to="/" className="header-button">
+        <Link to="/publish" className="header-button">
           <FontAwesomeIcon icon="tag" className="icon" />
           Vends tes Articles
         </Link>

@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Cookie from "js-cookie";
 import "./Assets/css/App.css";
 import "./Assets/Fonts/stylesheet.css";
 // MAIN COMPONENTS
 import Home from "./Containers/Home";
 import Offers from "./Containers/Offers";
+import Publish from "./Containers/Publish";
 import Header from "./Components/Header";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
@@ -56,21 +62,24 @@ function App() {
         <Route path="/offer/:id">
           <Offers />
         </Route>
+        <Route path="/publish">
+          {token ? <Publish token={token} /> : <Redirect to="/" />}
+        </Route>
         <Route path="/">
           <Home search={search} />
         </Route>
       </Switch>
       {/* MODAL PAGES */}
-      {modal1 ? (
+      {modal1 && (
         <Route path="/login">
           <Login setUser={setUser} setModal1={setModal1} />
         </Route>
-      ) : null}
-      {modal2 ? (
+      )}
+      {modal2 && (
         <Route path="/signup">
           <Signup setUser={setUser} setModal2={setModal2} />
         </Route>
-      ) : null}
+      )}
       <Footer />
     </Router>
   );

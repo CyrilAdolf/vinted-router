@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../Components/Card";
+import Filter from "../Components/Filter";
+import PageNumber from "../Components/PageNumber";
 import hero from "../Assets/img/hero.jpg";
 
 const Home = ({ search }) => {
@@ -13,36 +15,28 @@ const Home = ({ search }) => {
   const [asc, setAsc] = useState("price-asc");
   const [minPrice, setMinPrice] = useState();
   const [maxPrice, setMaxPrice] = useState();
-
+  const history = useHistory();
+  // Display object is fixed
+  const limit = 8;
   // AXIOS REQ
   useEffect(() => {
     const fetchdata = async () => {
       try {
         const response = await axios.get(
-          // REPLACE WITH MY BACKEND URL
-          minPrice
-            ? maxPrice
-              ? `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}&priceMax=${maxPrice}`
-              : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}`
-            : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}` &&
-              maxPrice
-            ? minPrice
-              ? `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMin=${minPrice}&priceMax=${maxPrice}`
-              : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}&priceMax=${maxPrice}`
-            : `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${8}&page=${page}&title=${search}&sort=${asc}`
+          `https://vinted-api-phoenix2020.herokuapp.com/offers?limit=${limit}&page=${page}&title=${search}&sort=${asc}&priceMin=${
+            minPrice || 0
+          }&priceMax=${maxPrice || 99999999999999}`
         );
-        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
-        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
-        // BUG HERE : WHEN MIN OR MAXPRICE APPLIED WE NEED TO GO BACK TO PAGE 1
         setOffers(response.data.offers);
         setIsLoading(false);
-        setTotalPage(Math.ceil(response.data.count / 8));
+        setTotalPage(Math.ceil(response.data.count / limit));
+        // history.push("/");
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchdata();
-  }, [page, search, asc, minPrice, maxPrice]);
+  }, [page, search, asc, minPrice, maxPrice, limit, history]);
 
   // DEFINE AN ARRAY WITH NUMBER FROM 1 TO TOTALPAGE
   let arrayPage = [];
@@ -50,7 +44,6 @@ const Home = ({ search }) => {
     arrayPage.push(i);
   }
 
-  console.log(minPrice);
   return isLoading ? (
     // PACKAGE ARE AVAILABLE TO STYLE LOADING SCREEN
     <p className="container">En cours de chargement...</p>
@@ -59,45 +52,14 @@ const Home = ({ search }) => {
       <div className="hero">
         <img src={hero} alt="hero" />
       </div>
-      <div className="filter">
-        <div className="filterAsc">
-          {asc === "price-asc" ? (
-            <p
-              onClick={() => {
-                setAsc("price-desc");
-              }}
-            >
-              ⇣ Trier par prix décroissant ?
-            </p>
-          ) : (
-            <p
-              onClick={() => {
-                setAsc("price-asc");
-              }}
-            >
-              ⇡ Trier par prix croissant ?
-            </p>
-          )}
-        </div>
-        <div className="filterPriceMinMax">
-          Prix min :
-          <input
-            type="text"
-            value={minPrice}
-            onChange={(e) => {
-              setMinPrice(e.target.value);
-            }}
-          />
-          Prix max :
-          <input
-            type="text"
-            value={maxPrice}
-            onChange={(e) => {
-              setMaxPrice(e.target.value);
-            }}
-          />
-        </div>
-      </div>
+      <Filter
+        asc={asc}
+        setAsc={setAsc}
+        minPrice={minPrice}
+        setMinPrice={setMinPrice}
+        maxPrice={maxPrice}
+        setMaxPrice={setMaxPrice}
+      />
       <div className="card-section">
         {offers.map((offer, i) => {
           return (
@@ -107,25 +69,7 @@ const Home = ({ search }) => {
           );
         })}
       </div>
-      <div className="pageInfo">
-        <p>Pages</p>
-        <div className="pageNumber">
-          {/* MAP OVER A LIST OF NUMBER */}
-          {arrayPage.map((page, i) => {
-            return (
-              <p
-                key={i}
-                className="eachNumber"
-                onClick={() => {
-                  setPage(page);
-                }}
-              >
-                {page}
-              </p>
-            );
-          })}
-        </div>
-      </div>
+      <PageNumber arrayPage={arrayPage} setPage={setPage} />
     </div>
   );
 };

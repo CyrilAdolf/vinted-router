@@ -26,7 +26,13 @@ const IfNoTokenButtons = ({ setModal1, setModal2 }) => {
         >
           <FontAwesomeIcon icon="key" className="icon" /> Se Connecter
         </Link>
-        <Link to="/" className="header-button">
+        <Link
+          to="/login"
+          className="header-button"
+          onClick={() => {
+            setModal1(true);
+          }}
+        >
           <FontAwesomeIcon icon="tag" className="icon" />
           Vends tes Articles
         </Link>

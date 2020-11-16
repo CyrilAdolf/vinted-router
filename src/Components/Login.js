@@ -10,14 +10,14 @@ const Login = ({ setUser, setModal1 }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://vinted-api-phoenix2020.herokuapp.com/user/login",
         {
           email: email,
           password: password,
         }
       );
       setUser(response.data.token);
-      history.push("/");
+      history.push("/publish");
     } catch (error) {
       console.log(error.message);
     }
