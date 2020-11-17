@@ -24,7 +24,6 @@ const Offers = ({ handleFetch }) => {
     };
     fetchdata();
   }, [id]);
-  console.log(offer);
   return isLoading ? (
     <p className="container">En cours de chargement...</p>
   ) : (
@@ -32,9 +31,9 @@ const Offers = ({ handleFetch }) => {
       <div className="offers">
         <div className="pictures">
           {mainPicture ? (
-            <img src={mainPicture} alt="" />
+            <img src={mainPicture} alt="main picture1" />
           ) : (
-            <img src={offer.product_image.secure_url} alt="" />
+            <img src={offer.product_image.secure_url} alt="main picture2" />
           )}
           <div>
             {offer.product_pictures &&
@@ -43,7 +42,7 @@ const Offers = ({ handleFetch }) => {
                   <img
                     className="additionalPic"
                     src={picture.secure_url}
-                    alt=""
+                    alt={picture.secure_url}
                     key={picture.asset_id}
                     onClick={() => {
                       setMainPicture(picture.secure_url);

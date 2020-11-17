@@ -16,15 +16,15 @@ const Header = ({
     <div className="container header">
       <div>
         <Link to="/">
-          <img src={logo} alt="" className="logo" />
+          <img src={logo} alt="logo" className="logo" />
         </Link>
         <input
           className="searchBar"
           type="text"
           value={search}
           placeholder="🔍 Rechercher des articles"
-          onChange={(e) => {
-            setSearch(e.target.value);
+          onChange={(event) => {
+            setSearch(event.target.value);
           }}
         />
         <div className="buttons">

@@ -16,6 +16,7 @@ const Publish = ({ token }) => {
 
   const history = useHistory();
 
+  // Needed when file format is used
   const formData = new FormData();
   formData.append("title", title);
   formData.append("description", description);
@@ -36,7 +37,7 @@ const Publish = ({ token }) => {
         {
           headers: {
             authorization: `Bearer ${token}`,
-            // "Content-Type": "multipart/form-data"
+            // "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -51,13 +52,13 @@ const Publish = ({ token }) => {
       console.log(error.message);
     }
   };
-  console.log(file);
 
   return (
     <div className="container container-form">
       <h3>Vends ton article</h3>
       <form className="publishForm" onSubmit={handleSubmit}>
         <div>
+          {/* DROPZONE FOR PICTURE */}
           <Dropzone onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
             {({ getRootProps, getInputProps }) => (
               <section>
@@ -68,18 +69,6 @@ const Publish = ({ token }) => {
               </section>
             )}
           </Dropzone>
-          {/* 
-          <label for="file" className="file">
-            + Ajouter une photo
-          </label>
-          <input
-            id="file"
-            type="file"
-            onChange={(ev) => {
-              // console.log(ev.target.files[0]);
-              setFile(ev.target.files[0]);
-            }}
-          /> */}
         </div>
         <div>
           <p>Titre</p>

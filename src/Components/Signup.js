@@ -8,7 +8,8 @@ const Signup = ({ setUser, setModal2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "https://vinted-api-phoenix2020.herokuapp.com/user/signup",
@@ -22,11 +23,7 @@ const Signup = ({ setUser, setModal2 }) => {
   };
   return (
     <div className="container login modal-wrapper">
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
+      <form>
         <div
           className="exit-modal"
           onClick={() => {

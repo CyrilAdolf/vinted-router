@@ -35,8 +35,8 @@ const Filter = ({
           type="text"
           value={minPrice}
           placeholder="ex: 2,00 €"
-          onChange={(e) => {
-            setMinPrice(e.target.value);
+          onChange={(event) => {
+            setMinPrice(event.target.value);
           }}
         />
         Prix max :
@@ -44,8 +44,8 @@ const Filter = ({
           type="text"
           value={maxPrice}
           placeholder="ex: 200 €"
-          onChange={(e) => {
-            setMaxPrice(e.target.value);
+          onChange={(event) => {
+            setMaxPrice(event.target.value);
           }}
         />
       </div>

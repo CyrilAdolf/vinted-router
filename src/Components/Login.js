@@ -7,7 +7,8 @@ const Login = ({ setUser, setModal1 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "https://vinted-api-phoenix2020.herokuapp.com/user/login",
@@ -22,16 +23,9 @@ const Login = ({ setUser, setModal1 }) => {
       console.log(error.message);
     }
   };
-  //   DEFAULT VALUE TO TEST
-  //   email: "brice@lereacteur.io",
-  //   password: "azerty",
   return (
     <div className="container login modal-wrapper">
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
+      <form>
         <div
           className="exit-modal"
           onClick={() => {
@@ -60,8 +54,8 @@ const Login = ({ setUser, setModal1 }) => {
         <input
           type="submit"
           value="Se connecter"
-          onClick={() => {
-            handleSubmit();
+          onClick={(event) => {
+            handleSubmit(event);
           }}
         />
       </form>

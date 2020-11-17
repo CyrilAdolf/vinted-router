@@ -9,9 +9,9 @@ import Cookie from "js-cookie";
 import "./Assets/css/App.css";
 import "./Assets/Fonts/stylesheet.css";
 // MAIN COMPONENTS
-import Home from "./Containers/Home";
-import Offers from "./Containers/Offers";
-import Publish from "./Containers/Publish";
+import Home from "./containers/Home";
+import Offers from "./containers/Offers";
+import Publish from "./containers/Publish";
 import Header from "./Components/Header";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
