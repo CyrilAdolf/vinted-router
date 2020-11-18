@@ -8,6 +8,7 @@ const Signup = ({ setUser, setModal2 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -16,6 +17,7 @@ const Signup = ({ setUser, setModal2 }) => {
         { email: email, username: username, password: password }
       );
       setUser(response.data.token);
+      console.log(response.data);
       history.push("/");
     } catch (error) {
       console.log(error.message);
@@ -23,7 +25,13 @@ const Signup = ({ setUser, setModal2 }) => {
   };
   return (
     <div className="container login modal-wrapper">
-      <form>
+      <form
+        onSubmit={(event) => {
+          // AXIOS REQ
+          handleSubmit(event);
+          console.log("CLick");
+        }}
+      >
         <div
           className="exit-modal"
           onClick={() => {
@@ -55,14 +63,7 @@ const Signup = ({ setUser, setModal2 }) => {
           onChange={(event) => setPassword(event.target.value)}
           placeholder="Mot de passe"
         />
-        <input
-          type="submit"
-          value="S'inscrire"
-          onClick={() => {
-            // AXIOS REQ
-            handleSubmit();
-          }}
-        />
+        <input type="submit" value="S'inscrire" />
       </form>
     </div>
   );
