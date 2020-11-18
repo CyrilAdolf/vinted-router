@@ -18,7 +18,7 @@ const Login = ({ setUser, setModal1 }) => {
         }
       );
       setUser(response.data.token);
-      history.push("/publish");
+      history.push("/");
     } catch (error) {
       console.log(error.message);
     }

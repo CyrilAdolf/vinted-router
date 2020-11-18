@@ -43,8 +43,6 @@ const Home = ({ search }) => {
   for (let i = 1; i <= totalPage; i++) {
     arrayPage.push(i);
   }
-  console.log(limit);
-  console.log(offers);
   return isLoading ? (
     // PACKAGE ARE AVAILABLE TO STYLE LOADING SCREEN
     <p className="container">En cours de chargement...</p>
@@ -72,6 +70,7 @@ const Home = ({ search }) => {
           })}
       </div>
       <PageNumber arrayPage={arrayPage} setPage={setPage} />
+      {/* DEFINE HOW MANY RESULT TO DISPLAY WITH SETLIMIT STATE */}
     </div>
   );
 };

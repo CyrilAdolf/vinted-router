@@ -33,7 +33,13 @@ const IfNoTokenButtons = ({ setModal1, setModal2 }) => {
             setModal1(true);
           }}
         >
-          <FontAwesomeIcon icon="tag" className="icon" />
+          <FontAwesomeIcon
+            icon="tag"
+            className="icon"
+            onClick={() => {
+              setModal1(true);
+            }}
+          />
           Vends tes Articles
         </Link>
       </div>
@@ -57,8 +63,14 @@ const IfNoTokenButtons = ({ setModal1, setModal2 }) => {
         >
           <FontAwesomeIcon icon="key" className="icon" />
         </Link>
-        <Link to="/" className="header-button">
-          <FontAwesomeIcon icon="tag" className="icon" />
+        <Link to="/login" className="header-button">
+          <FontAwesomeIcon
+            icon="tag"
+            className="icon"
+            onClick={() => {
+              setModal1(true);
+            }}
+          />
         </Link>
       </div>
     </>

@@ -3,9 +3,12 @@ import React from "react";
 const Card = ({ offer }) => {
   return (
     <div className="card">
-      <p className="user">
-        {offer.owner.account.username && offer.owner.account.username}
-      </p>
+      <div className="user">
+        <span>
+          {offer.owner.account.username && offer.owner.account.username}
+        </span>
+        <span>{offer.product_name && offer.product_name}</span>
+      </div>
       <img
         className="card-picture"
         src={offer.product_image.secure_url}

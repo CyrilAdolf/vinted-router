@@ -1,5 +1,11 @@
 /* COMMON RULES */
 
+.card-element {
+  border: black 1px solid;
+  height: 30px;
+  width: 500px;
+}
+
 .container {
   max-width: 1300px;
   margin: 60px auto 0 auto;
@@ -138,6 +144,12 @@ a:hover {
   margin: 15px;
   width: 265px;
 }
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
 .card:hover {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
@@ -200,6 +212,7 @@ a {
 .pictures > img {
   height: 100%;
   box-sizing: border-box;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .pictures div {
   max-width: 40%;
@@ -215,6 +228,10 @@ a {
   padding: 30px;
   box-sizing: border-box;
   overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .additionalPic {
   height: 150px;
@@ -246,26 +263,18 @@ a {
 .descript div span:first-child {
   color: #999;
 }
-/* FOOTER  */
-/* FOOTER  */
-/* FOOTER  */
-.footer {
+.buy-button {
+  border: #2aaeb7 2px solid;
+  height: 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 50px;
+  align-items: center;
+  background-color: #2aaeb7;
+  color: white;
+}
+.buy-button:hover {
   background-color: white;
-  border-top: #2aaeb7 solid 1px;
-  margin-top: 0;
-}
-.footer img {
-  height: 25px;
-}
-.footer a {
-  color: black;
-}
-.footer a:hover {
-  font-weight: 900;
+  color: #2aaeb7;
 }
 /* PUBLISH - FORM */
 /* PUBLISH - FORM */
@@ -294,9 +303,6 @@ h3 {
 .publishForm input:hover {
   border-bottom: #2aaeb7 2px solid;
 }
-#file {
-  display: none;
-}
 .dropZone {
   display: flex;
   cursor: pointer;
@@ -307,10 +313,6 @@ h3 {
   width: 250px;
   border: #2aaeb7 2px dashed;
   border-radius: 15px;
-}
-.file:hover {
-  background-color: #2aaeb7;
-  color: white;
 }
 .publishForm > div {
   display: flex;
@@ -331,6 +333,75 @@ h3 {
 .publishForm > div:last-child input:hover {
   color: white;
   background-color: #2aaeb7;
+}
+/* PAYMENT ROUTE */
+/* PAYMENT ROUTE */
+/* PAYMENT ROUTE */
+.payForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black 1px solid;
+  margin: 60px auto;
+  background-color: #eee;
+}
+.info-commande {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.info-commande > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.barre {
+  width: 90%;
+  border-bottom: 1px grey solid;
+}
+.total-section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.total-section > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.bold {
+  font-weight: 900;
+}
+.card-element {
+  margin-top: 20px;
+}
+.payForm > button {
+  width: 70%;
+  height: 35px;
+  background-color: rgb(24, 173, 24);
+  border: none;
+  margin-top: 20px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+}
+.payForm > button:hover {
+  background-color: rgb(26, 136, 26);
+}
+.msg-succeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+.msg-succeed > p {
+  width: 50%;
+  padding: auto;
+  font-size: 20px;
+  text-align: center;
 }
 /* FORM - MODAL */
 /* FORM - MODAL */
@@ -398,7 +469,27 @@ input:last-child:hover {
   width: Calc(100%);
   background-color: rgba(0, 0, 0, 0.7);
 }
-
+/* FOOTER  */
+/* FOOTER  */
+/* FOOTER  */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: white;
+  border-top: #2aaeb7 solid 1px;
+  margin-top: 0;
+}
+.footer img {
+  height: 25px;
+}
+.footer a {
+  color: black;
+}
+.footer a:hover {
+  font-weight: 900;
+}
 /* MEDIA QUERIES */
 /* MEDIA QUERIES */
 /* MEDIA QUERIES */

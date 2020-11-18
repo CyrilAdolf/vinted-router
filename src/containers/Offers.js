@@ -7,6 +7,7 @@ const Offers = ({ handleFetch }) => {
   const { id } = useParams();
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   // ALLOWS US TO MODIFY THE BIGGER PICTURE
   const [mainPicture, setMainPicture] = useState();
   // AXIOS REQ
@@ -24,6 +25,7 @@ const Offers = ({ handleFetch }) => {
     };
     fetchdata();
   }, [id]);
+
   return isLoading ? (
     <p className="container">En cours de chargement...</p>
   ) : (
@@ -66,6 +68,17 @@ const Offers = ({ handleFetch }) => {
           </div>
           <p style={{ color: "#999999" }}>DESCRIPTION :</p>
           <p>{offer.product_description}</p>
+          <Link
+            className="buy-button"
+            to={{
+              pathname: `/payment/${id}`,
+              state: {
+                offer,
+              },
+            }}
+          >
+            Acheter
+          </Link>
         </div>
       </div>
       <Link to={`/`}>⇤ Revenir à la page d'accueil</Link>

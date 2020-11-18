@@ -32,7 +32,7 @@ const ifTokenButtons = ({ setUser }) => {
         >
           <FontAwesomeIcon icon="key" className="icon" />
         </Link>
-        <Link to="/" className="header-button">
+        <Link to="/publish" className="header-button">
           <FontAwesomeIcon icon="tag" className="icon" />
         </Link>
       </div>
