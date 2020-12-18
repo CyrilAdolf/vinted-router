@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
+// IMPORT COMPONENTS AND HERO
 import Card from "../Components/Card";
 import Filter from "../Components/Filter";
 import PageNumber from "../Components/PageNumber";
+import LoadingComponent from "../Components/LoadingComponent";
 import hero from "../Assets/img/hero.jpg";
 
 const Home = ({ search }) => {
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(8);
   const [totalPage, setTotalPage] = useState();
   const [asc, setAsc] = useState("price-asc");
   const [minPrice, setMinPrice] = useState();
   const [maxPrice, setMaxPrice] = useState();
+  // FIXED VALUE
+  const limit = 8;
+
   const history = useHistory();
 
   // AXIOS REQ
@@ -30,9 +34,11 @@ const Home = ({ search }) => {
         setOffers(response.data.offers);
         setIsLoading(false);
         setTotalPage(Math.ceil(response.data.count / limit));
-        // history.push("/");
       } catch (error) {
         console.log(error.response);
+        alert(
+          "Une erreur s'est produite lors de la recherche. Veuillez réessayer"
+        );
       }
     };
     fetchdata();
@@ -43,9 +49,11 @@ const Home = ({ search }) => {
   for (let i = 1; i <= totalPage; i++) {
     arrayPage.push(i);
   }
+
   return isLoading ? (
-    // PACKAGE ARE AVAILABLE TO STYLE LOADING SCREEN
-    <p className="container">En cours de chargement...</p>
+    <p className="container">
+      <LoadingComponent />
+    </p>
   ) : (
     <div className="container">
       <div className="hero">
@@ -70,7 +78,6 @@ const Home = ({ search }) => {
           })}
       </div>
       <PageNumber arrayPage={arrayPage} setPage={setPage} />
-      {/* DEFINE HOW MANY RESULT TO DISPLAY WITH SETLIMIT STATE */}
     </div>
   );
 };

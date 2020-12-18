@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Dropzone from "react-dropzone";
 
 const Publish = ({ token }) => {
+  // STATE IS NEEDE FOR EACH INPUT
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -16,7 +17,7 @@ const Publish = ({ token }) => {
 
   const history = useHistory();
 
-  // Needed when file format is used
+  // NEEDED WHEN FILE (OBJECT) FORMAT IS USED
   const formData = new FormData();
   formData.append("title", title);
   formData.append("description", description);
@@ -28,8 +29,8 @@ const Publish = ({ token }) => {
   formData.append("price", price);
   formData.append("picture", file);
 
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "https://vinted-api-phoenix2020.herokuapp.com/offer/publish",
@@ -41,7 +42,7 @@ const Publish = ({ token }) => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       response.status === 200
         ? alert(
             "Votre demande à été prise en compte et est en cours de traitement"
@@ -50,6 +51,7 @@ const Publish = ({ token }) => {
       history.push("/");
     } catch (error) {
       console.log(error.message);
+      alert("Une erreur s'est produite.. vérifiez votre formulaire");
     }
   };
 
@@ -59,6 +61,7 @@ const Publish = ({ token }) => {
       <form className="publishForm" onSubmit={handleSubmit}>
         <div>
           {/* DROPZONE FOR PICTURE */}
+
           <Dropzone onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}>
             {({ getRootProps, getInputProps }) => (
               <section>
@@ -75,8 +78,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={title}
-            onChange={(ev) => {
-              setTitle(ev.target.value);
+            onChange={(event) => {
+              setTitle(event.target.value);
             }}
             placeholder="ex: Pull à capuche"
           />
@@ -86,8 +89,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={description}
-            onChange={(ev) => {
-              setDescription(ev.target.value);
+            onChange={(event) => {
+              setDescription(event.target.value);
             }}
             placeholder="ex: Un trou pour la tête, deux pour les bras et un autre pour les jambes"
           />
@@ -97,8 +100,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={brand}
-            onChange={(ev) => {
-              setBrand(ev.target.value);
+            onChange={(event) => {
+              setBrand(event.target.value);
             }}
             placeholder="ex: Zara"
           />
@@ -108,8 +111,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={size}
-            onChange={(ev) => {
-              setSize(ev.target.value);
+            onChange={(event) => {
+              setSize(event.target.value);
             }}
             placeholder="ex: XL"
           />
@@ -119,8 +122,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={color}
-            onChange={(ev) => {
-              setColor(ev.target.value);
+            onChange={(event) => {
+              setColor(event.target.value);
             }}
             placeholder="ex: Bleu"
           />
@@ -130,8 +133,8 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={condition}
-            onChange={(ev) => {
-              setCondition(ev.target.value);
+            onChange={(event) => {
+              setCondition(event.target.value);
             }}
             placeholder="ex: Tout doux mais troué"
           />
@@ -141,20 +144,19 @@ const Publish = ({ token }) => {
           <input
             type="text"
             value={location}
-            onChange={(ev) => {
-              setLocation(ev.target.value);
+            onChange={(event) => {
+              setLocation(event.target.value);
             }}
             placeholder="ex: Paris"
           />
         </div>
         <div>
           <p>Prix</p>
-
           <input
             type="number"
             value={price}
-            onChange={(ev) => {
-              setPrice(ev.target.value);
+            onChange={(event) => {
+              setPrice(event.target.value);
             }}
             placeholder="0,00 €"
           />

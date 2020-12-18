@@ -1,11 +1,5 @@
 /* COMMON RULES */
 
-.card-element {
-  border: black 1px solid;
-  height: 30px;
-  width: 500px;
-}
-
 .container {
   max-width: 1300px;
   margin: 60px auto 0 auto;
@@ -95,6 +89,11 @@ a:hover {
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
 /* MINI CARD SECTION */
+.card-element {
+  border: black 1px solid;
+  height: 30px;
+  width: 500px;
+}
 .filter {
   display: flex;
   justify-content: space-between;
@@ -406,6 +405,16 @@ h3 {
 /* FORM - MODAL */
 /* FORM - MODAL */
 /* FORM - MODAL */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 form {
   display: flex;
   flex-direction: column;
@@ -461,14 +470,7 @@ input:last-child:hover {
   align-items: center;
   height: 100vh;
 }
-.modal-wrapper {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: Calc(100%);
-  background-color: rgba(0, 0, 0, 0.7);
-}
+
 /* FOOTER  */
 /* FOOTER  */
 /* FOOTER  */

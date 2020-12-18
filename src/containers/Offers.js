@@ -21,6 +21,7 @@ const Offers = ({ handleFetch }) => {
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
+        alert("Les annonces n'ont pas pu être récupérées.");
       }
     };
     fetchdata();

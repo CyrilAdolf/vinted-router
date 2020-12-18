@@ -5,14 +5,18 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+// IMPORT COOKIE
 import Cookie from "js-cookie";
-// Stripe package
+
+// STRIPE PACKAGE
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
+// IMPORT STYLE
 import "./Assets/css/App.css";
 import "./Assets/Fonts/stylesheet.css";
-// MAIN COMPONENTS
+
+// IMPORT CONTAINERS AND COMPONENTS
 import Home from "./containers/Home";
 import Offers from "./containers/Offers";
 import Publish from "./containers/Publish";
@@ -21,6 +25,7 @@ import Header from "./Components/Header";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Footer from "./Components/Footer";
+
 // FONTAWESOME LIBRARY
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -33,6 +38,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 library.add(faEnvelope, faKey, faHeart, faUserPlus, faTag, faTimes);
 
+// STRIPE TOKEN
 const stripePromise = loadStripe(
   "pk_test_51HoU2iKVdzgPmS4kx2HvAQK4EIUKyXw3vTnAw4URPxW15x9kghg1GhdGAwrGf6yS2ogwsPFhQBdTr29LR544Mry700vu0wNdof"
 );
@@ -46,11 +52,11 @@ function App() {
   // FUNCTION TO SET THE TOKEN
   const setUser = (dataToken) => {
     if (dataToken) {
-      // CONNECTION = CREATE A TOKEN AND SO A COOKIE
+      // CONNECTION CREATES A TOKEN AND ALSO A COOKIE
       Cookie.set("userToken", dataToken);
       setToken(dataToken);
     } else {
-      // DISCONNECTION = REMOVE COOKIE AND TOKEN
+      // DISCONNECTION REMOVES THE COOKIE AND THE TOKEN
       Cookie.remove("userToken");
       setToken(null);
     }
@@ -58,6 +64,7 @@ function App() {
 
   return (
     <Router>
+      {/* HEADER IS ALWAYS DISPLAYS */}
       <Header
         token={token}
         setUser={setUser}
@@ -71,14 +78,17 @@ function App() {
         <Route path="/offer/:id">
           <Offers />
         </Route>
+
         <Route path="/payment/:id">
           <Elements stripe={stripePromise}>
             <Payment />
           </Elements>
         </Route>
+
         <Route path="/publish">
           {token ? <Publish token={token} /> : <Redirect to="/" />}
         </Route>
+
         <Route path="/">
           <Home search={search} />
         </Route>

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+// IMPORT COMPONENTS AND LOGO
 import IfTokenButtons from "./IfTokenButtons";
 import IfNoTokenButtons from "./IfNoTokenButtons";
 import logo from "../Assets/img/Vinted_logo.png";

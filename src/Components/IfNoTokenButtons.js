@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const IfNoTokenButtons = ({ setModal1, setModal2 }) => {
   return (
     <>
-      {/* BUTTONS DISPLAYED WHEN OVER 1024PX */}
+      {/* BUTTONS DISPLAYED OVER 1024PX */}
       <div className="media-1024">
         <Link
           to="/signup"
@@ -43,7 +43,8 @@ const IfNoTokenButtons = ({ setModal1, setModal2 }) => {
           Vends tes Articles
         </Link>
       </div>
-      {/* BUTTONS DISPLAYED WHEN UNDER 1024PX */}
+
+      {/* BUTTONS DISPLAYED UNDER 1024PX */}
       <div className="hidden">
         <Link
           to="/signup"

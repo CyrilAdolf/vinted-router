@@ -7,8 +7,10 @@ const Signup = ({ setUser, setModal2 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const history = useHistory();
 
+  // SIGNUP REQUEST
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -17,19 +19,18 @@ const Signup = ({ setUser, setModal2 }) => {
         { email: email, username: username, password: password }
       );
       setUser(response.data.token);
-      console.log(response.data);
       history.push("/");
     } catch (error) {
       console.log(error.message);
+      alert("Une erreur s'est produite, veuillez réessayer");
     }
   };
+
   return (
     <div className="container login modal-wrapper">
       <form
         onSubmit={(event) => {
-          // AXIOS REQ
           handleSubmit(event);
-          console.log("CLick");
         }}
       >
         <div

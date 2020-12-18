@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
 
 const Payment = () => {
-  const { id } = useParams();
   const [succeed, setSucceed] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const location = useLocation();
-  console.log(id);
-  console.log(location.state.offer);
 
-  //   STRIPE REQUEST
+  // STRIPE REQUEST
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -24,7 +21,6 @@ const Payment = () => {
       console.log(stripeResponse);
       // WE RECEIVED A TOKEN ONCE DATA ARE RECEIVED
       const stripeToken = stripeResponse.token.id;
-
       // A REQ IS SEND TO OUR BACKEND TO SETUP ALL DETAILS (PRICE, DELIVERY)
       const response = await axios.post(
         "https://vinted-api-phoenix2020.herokuapp.com/payment",
@@ -34,14 +30,15 @@ const Payment = () => {
           description: location.state.offer.product_description,
         }
       );
-      console.log(response.data);
-
-      //  IF WE GET A POSITIVE RESULT FROM OUR BACKEND
+      // IF WE GET A POSITIVE RESULT FROM OUR BACKEND
       if (response.data.status === "succeeded") {
         setSucceed(true);
       }
     } catch (error) {
       console.log(error.message);
+      alert(
+        "Une erreur, s'est produite, votre paiement n'a pas pu être validé."
+      );
     }
   };
 

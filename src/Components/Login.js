@@ -4,9 +4,13 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = ({ setUser, setModal1 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // STATE INITIATED TO DEFAULT USER FOR TEST
+  const [email, setEmail] = useState("test@test.com");
+  const [password, setPassword] = useState("azerty");
+
   const history = useHistory();
+
+  // LOGIN REQUEST
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -21,10 +25,12 @@ const Login = ({ setUser, setModal1 }) => {
       history.push("/");
     } catch (error) {
       console.log(error.message);
+      alert("Une erreur s'est produite, vous n'êtes pas connecté");
     }
   };
+
   return (
-    <div className="container login modal-wrapper">
+    <div className="login modal-wrapper">
       <form>
         <div
           className="exit-modal"
