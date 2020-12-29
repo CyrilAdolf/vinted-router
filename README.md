@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is published online: 
+https://amazing-swanson-c15e87.netlify.app
+
+The following functionnalities are available on this website: 
+  - Signup / Login
+  - Publish offers with pictures
+  - Research bar
+  - Sort results
+  - Payement (test mode)
+
+
 
 ## Available Scripts
 
