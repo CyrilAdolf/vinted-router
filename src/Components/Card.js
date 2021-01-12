@@ -9,11 +9,15 @@ const Card = ({ offer }) => {
         </span>
         <span>{offer.product_name && offer.product_name}</span>
       </div>
-      <img
-        className="card-picture"
-        src={offer.product_image.secure_url}
-        alt={offer.product_image.secure_url}
-      />
+      {offer.product_image ? (
+        <img
+          className="card-picture"
+          src={offer.product_image.secure_url}
+          alt={offer.product_image.secure_url}
+        />
+      ) : (
+        <img className="card-picture" />
+      )}
       <div className="card-footer">
         <p>{offer.product_price} €</p>
         <p>{offer.product_details[3].TAILLE}</p>
