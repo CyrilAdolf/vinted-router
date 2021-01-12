@@ -31,27 +31,31 @@ const Publish = ({ token }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://vinted-api-phoenix2020.herokuapp.com/offer/publish",
-        formData,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-            // "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      // console.log(response);
-      response.status === 200
-        ? alert(
-            "Votre demande à été prise en compte et est en cours de traitement"
-          )
-        : alert("Une erreur s'est produite.. vérifiez votre formulaire");
-      history.push("/");
-    } catch (error) {
-      console.log(error.message);
-      alert("Une erreur s'est produite.. vérifiez votre formulaire");
+    if (file) {
+      try {
+        const response = await axios.post(
+          "https://vinted-api-phoenix2020.herokuapp.com/offer/publish",
+          formData,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+              // "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        // console.log(response);
+        response.status === 200
+          ? alert(
+              "Votre demande à été prise en compte et est en cours de traitement"
+            )
+          : alert("Une erreur s'est produite.. vérifiez votre formulaire");
+        history.push("/");
+      } catch (error) {
+        console.log(error.message);
+        alert("Une erreur s'est produite.. vérifiez votre formulaire");
+      }
+    } else {
+      alert("Veuillez ajouter une photo avant de valider votre annonce.");
     }
   };
 
